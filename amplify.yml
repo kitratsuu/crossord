@@ -2,37 +2,51 @@ version: 1
 
 applications:
   - appRoot: apps/main
+
     frontend:
+      buildPath: "/"
+
       phases:
         preBuild:
           commands:
-            - corepack enable
-            - pnpm install
+            - npm install -g pnpm
+            - pnpm install --frozen-lockfile
+
         build:
           commands:
-            - pnpm build
+            - pnpm turbo build --filter=main
+
       artifacts:
-        baseDirectory: .next
+        baseDirectory: apps/main/.next
         files:
           - "**/*"
+
       cache:
         paths:
           - node_modules/**/*
+          - .turbo/**/*
 
   - appRoot: apps/portfolio
+
     frontend:
+      buildPath: "/"
+
       phases:
         preBuild:
           commands:
-            - corepack enable
-            - pnpm install
+            - npm install -g pnpm
+            - pnpm install --frozen-lockfile
+
         build:
           commands:
-            - pnpm build
+            - pnpm turbo build --filter=portfolio
+
       artifacts:
-        baseDirectory: .next
+        baseDirectory: apps/portfolio/.next
         files:
           - "**/*"
+
       cache:
         paths:
           - node_modules/**/*
+          - .turbo/**/*
