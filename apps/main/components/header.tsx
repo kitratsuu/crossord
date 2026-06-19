@@ -59,7 +59,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 function Header() {
   return (
-    <div className="w-full max-w-480 h-12.5 flex justify-between items-center px-10">
+    <div className="sticky top-0 z-50 w-full max-w-480 h-12.5 flex justify-between items-center px-10">
       <div className="flex flex-row flex-wrap items-center gap-6 md:gap-12">
         <Avatar>
           <AvatarImage

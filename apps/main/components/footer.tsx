@@ -62,7 +62,7 @@ export default function Footer() {
           <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-5">
             {/* Brand */}
             <div className="lg:col-span-2">
-              <span className="text-2xl font-bold tracking-tight">r3x<span className="opacity-40">studios</span></span>
+              <span className="text-2xl font-bold tracking-tight">cros<span className="opacity-40">sord</span></span>
 
               <p className="mt-4 max-w-sm text-sm leading-relaxed opacity-60">
                 Building scalable web apps, mobile products, and digital
@@ -70,8 +70,8 @@ export default function Footer() {
               </p>
 
               <div className="mt-8 space-y-1 text-sm opacity-50">
-                <p>hello@r3xstudios.com</p>
-                <p>+91 XXXXX XXXXX</p>
+                <p>info@crossord.com</p>
+                <p>+91 020303023</p>
               </div>
 
               {/* Socials */}
