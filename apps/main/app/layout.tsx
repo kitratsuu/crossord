@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@workspace/ui/lib/utils";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+// import { SessionProvider } from "next-auth/session"; // wrap children with <SessionProvider>
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
