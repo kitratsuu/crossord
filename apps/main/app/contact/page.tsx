@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
 import { Badge } from "@workspace/ui/components/badge";
 import { Button } from "@workspace/ui/components/button";
 import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 import { Textarea } from "@workspace/ui/components/textarea";
+import { submitContactForm, type ContactFormState } from "./actions";
 import {
   ArrowRight,
   CheckCircle2,
@@ -15,13 +16,13 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+const initialState: ContactFormState = { success: false };
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
+export default function ContactPage() {
+  const [state, formAction, isPending] = useActionState(
+    submitContactForm,
+    initialState,
+  );
 
   return (
     <main className="min-h-screen bg-white">
@@ -96,7 +97,7 @@ export default function ContactPage() {
           <div className="grid gap-8 lg:grid-cols-[1fr_360px]">
             {/* FORM CARD */}
             <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-10">
-              {!submitted ? (
+              {!state.success ? (
                 <>
                   <div className="mb-9">
                     <p className="mb-3 text-xs font-semibold tracking-[0.2em] text-primary">
@@ -113,7 +114,7 @@ export default function ContactPage() {
                     </p>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form action={formAction} className="space-y-6">
                     <div className="grid gap-6 sm:grid-cols-2">
                       <div className="grid gap-2">
                         <Label
@@ -125,6 +126,7 @@ export default function ContactPage() {
 
                         <Input
                           id="name"
+                          name="name"
                           required
                           placeholder="John Smith"
                           className="h-12 rounded-xl border-slate-200 bg-slate-50/50 px-4 focus-visible:ring-primary"
@@ -141,6 +143,7 @@ export default function ContactPage() {
 
                         <Input
                           id="email"
+                          name="email"
                           type="email"
                           required
                           placeholder="you@company.com"
@@ -160,6 +163,7 @@ export default function ContactPage() {
 
                       <Input
                         id="company"
+                        name="company"
                         placeholder="Your company name"
                         className="h-12 rounded-xl border-slate-200 bg-slate-50/50 px-4 focus-visible:ring-primary"
                       />
@@ -175,12 +179,17 @@ export default function ContactPage() {
 
                       <Textarea
                         id="message"
+                        name="message"
                         required
                         rows={7}
                         placeholder="What are you looking to build? What problem are you trying to solve?"
                         className="resize-none rounded-xl border-slate-200 bg-slate-50/50 p-4 focus-visible:ring-primary"
                       />
                     </div>
+
+                    {state.error && (
+                      <p className="text-sm text-red-500">{state.error}</p>
+                    )}
 
                     <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
                       <p className="max-w-xs text-xs leading-5 text-slate-400">
@@ -191,9 +200,10 @@ export default function ContactPage() {
                       <Button
                         type="submit"
                         size="lg"
+                        disabled={isPending}
                         className="h-12 gap-2 rounded-xl px-6 font-semibold"
                       >
-                        Send Message
+                        {isPending ? "Sending..." : "Send Message"}
                         <ArrowRight className="h-4 w-4" />
                       </Button>
                     </div>
