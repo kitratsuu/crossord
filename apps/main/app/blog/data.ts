@@ -45,7 +45,6 @@ Some common examples include:
 - Meeting and conversation summaries
 - Data analysis
 - Content workflows
-- Administrative processes
 
 The goal is not simply to automate a task.
 

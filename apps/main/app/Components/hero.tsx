@@ -71,10 +71,6 @@ const capabilities = [
 export default function Hero() {
   return (
     <section className="relative min-h-[760px] w-full overflow-hidden bg-[#070B16] text-white lg:min-h-[850px]">
-      {/* =========================================================
-          BACKGROUND
-      ========================================================== */}
-
       {/* Dot grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.16]"
