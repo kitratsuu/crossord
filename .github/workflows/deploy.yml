@@ -38,6 +38,7 @@ jobs:
 
             # Monorepo: install + build from repo root so shared packages build too
             pnpm install --frozen-lockfile
+            pnpm --filter @workspace/db exec prisma generate
             pnpm build
 
             # The actual Next.js app lives in apps/main, so start must run from there
