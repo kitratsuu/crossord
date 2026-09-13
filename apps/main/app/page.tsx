@@ -13,7 +13,6 @@ import CTA from "@/app/Components/cta";
 export default function Page() {
   return (
     <main className="min-h-screen">
-      <Header />
       <Hero />
       <TrustedBy />
       <Services />

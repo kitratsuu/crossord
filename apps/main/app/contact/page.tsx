@@ -242,19 +242,19 @@ export default function ContactPage() {
                   <ContactItem
                     icon={Mail}
                     label="Email"
-                    value="hello@crossord.com"
+                    value="info@crossord.com"
                   />
 
                   <ContactItem
                     icon={Phone}
                     label="Phone"
-                    value="+91 00000 00000"
+                    value="+91 6230519669"
                   />
 
                   <ContactItem
                     icon={MapPin}
                     label="Location"
-                    value="Ludhiana, Punjab, India"
+                    value="Mohali, Punjab, India"
                   />
                 </div>
               </div>

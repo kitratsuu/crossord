@@ -94,7 +94,7 @@ export default function Hero() {
           HERO CONTENT
       ========================================================== */}
 
-      <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-12 px-6 pb-16 pt-16 lg:grid-cols-[0.88fr_1.12fr] lg:gap-4 lg:px-10 lg:pb-20 lg:pt-24">
+      <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-12 px-6 pb-16 pt-18 lg:grid-cols-[0.88fr_1.12fr] lg:gap-4 lg:px-10 lg:pb-20 lg:pt-24">
         {/* =======================================================
             LEFT CONTENT
         ======================================================== */}

@@ -110,7 +110,7 @@ export default function Process() {
             PROCESS TIMELINE
         ======================================================== */}
 
-        <div className="relative mt-16 lg:mt-20">
+        <div className="relative mt-5 lg:mt-20">
           {/* Desktop connecting line */}
           <div className="absolute left-[8%] right-[8%] top-[31px] hidden h-px bg-gradient-to-r from-[#DDE2F0] via-[#BFC8E7] to-[#DDE2F0] lg:block" />
 
@@ -118,55 +118,56 @@ export default function Process() {
           <div className="absolute left-[8%] top-[30px] hidden h-[2px] w-[34%] bg-gradient-to-r from-[#536BFF] to-[#7B6EFF] lg:block" />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map(({ icon: Icon, number, title, description, points }) => (
-              <div key={number} className="group relative">
-                {/* =================================================
+            {steps.map(
+              ({ icon: Icon, number, title, description, points }, index) => (
+                <div key={number} className="group relative">
+                  {/* =================================================
                       STEP NUMBER / ICON
                   ================================================== */}
 
-                <div className="relative z-10 flex items-center">
-                  {/* Main icon */}
-                  <div className="flex h-[64px] w-[64px] items-center justify-center rounded-2xl border border-[#DCE1EF] bg-white shadow-[0_10px_30px_rgba(31,45,90,0.08)] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#667AFF]/40 group-hover:shadow-[0_15px_35px_rgba(76,99,220,0.14)]">
-                    <Icon className="h-6 w-6 text-[#6175FF] transition-transform duration-500 group-hover:scale-110" />
+                  <div className="relative z-10 flex items-center">
+                    {/* Main icon  show this when not mobile */}
+                    <div className="hidden md:flex h-[64px] w-[64px] items-center justify-center rounded-2xl border border-[#DCE1EF] bg-white shadow-[0_10px_30px_rgba(31,45,90,0.08)] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#667AFF]/40 group-hover:shadow-[0_15px_35px_rgba(76,99,220,0.14)]">
+                      <Icon className="h-6 w-6 text-[#6175FF] transition-transform duration-500 group-hover:scale-110" />
+                    </div>
                   </div>
 
-                  {/* Number */}
-                  <span className="absolute -left-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[#536BFF] text-[9px] font-bold text-white shadow-[0_5px_15px_rgba(83,107,255,0.3)]">
-                    {number.replace("0", "")}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="mt-7">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-[19px] font-bold tracking-[-0.02em] text-slate-900">
-                      {title}
-                    </h3>
-
-                    <span className="h-px flex-1 bg-slate-200 transition-colors duration-300 group-hover:bg-[#AEBBFF]" />
-                  </div>
-
-                  <p className="mt-3 max-w-[280px] text-[13px] leading-[1.7] text-slate-500">
-                    {description}
-                  </p>
-
-                  {/* Points */}
-                  <div className="mt-5 space-y-2">
-                    {points.map((point) => (
-                      <div key={point} className="flex items-center gap-2">
-                        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#536BFF]/10">
-                          <Check className="h-2.5 w-2.5 text-[#536BFF]" />
-                        </span>
-
-                        <span className="text-[10px] font-medium text-slate-500">
-                          {point}
-                        </span>
+                  {/* Content */}
+                  <div className="mt-7">
+                    <div className="flex items-center gap-3">
+                      {/* Mobile icon show this when mobile */}
+                      <div className="flex md:hidden h-[22px] w-[22px]  items-center justify-center rounded-2xl shadow-[0_10px_30px_rgba(31,45,90,0.08)] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#667AFF]/40 group-hover:shadow-[0_15px_35px_rgba(76,99,220,0.14)]">
+                        <Icon className="h-6 w-6 text-[#6175FF] transition-transform duration-500 group-hover:scale-110" />
                       </div>
-                    ))}
+                      <h3 className="text-[19px] font-bold tracking-[-0.02em] text-slate-900">
+                        {title}
+                      </h3>
+
+                      <span className="h-px flex-1 bg-slate-200 transition-colors duration-300 group-hover:bg-[#AEBBFF]" />
+                    </div>
+
+                    <p className="mt-3 max-w-full md:max-w-[280px] text-[13px] leading-[1.7] text-slate-500">
+                      {description}
+                    </p>
+
+                    {/* Points */}
+                    <div className="mt-5 space-y-2">
+                      {points.map((point) => (
+                        <div key={point} className="flex items-center gap-2">
+                          <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#536BFF]/10">
+                            <Check className="h-2.5 w-2.5 text-[#536BFF]" />
+                          </span>
+
+                          <span className="text-[10px] font-medium text-slate-500">
+                            {point}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
         </div>
 

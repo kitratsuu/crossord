@@ -78,7 +78,7 @@ export default function Footer() {
 
             <div className="mt-8 space-y-1 text-sm text-white/50">
               <p>info@crossord.com</p>
-              <p>+91 020303023</p>
+              <p>+91 6230519669</p>
             </div>
 
             <div className="mt-8 flex gap-3">
@@ -154,8 +154,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 text-xs text-white/35 md:flex-row">
-          <p>© {new Date().getFullYear()} Crossord. All rights reserved.</p>
-          <p>Built with Next.js · Deployed on Vercel</p>
+          <p> © {new Date().getFullYear()} Crossord. All rights reserved. </p>
         </div>
       </div>
     </footer>

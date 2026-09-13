@@ -12,7 +12,6 @@ import Link from "next/link";
 
 const projects = [
   {
-    number: "01",
     tag: "Web Development",
     icon: LayoutDashboard,
     title: "NextGen Business Platform",
@@ -21,7 +20,6 @@ const projects = [
     href: "/work/nextgen-business-platform",
   },
   {
-    number: "02",
     tag: "AI & Automation",
     icon: Workflow,
     title: "Intelligent Workflow System",
@@ -30,7 +28,6 @@ const projects = [
     href: "/work/intelligent-workflow-system",
   },
   {
-    number: "03",
     tag: "Mobile App",
     icon: Smartphone,
     title: "Cross-Platform Mobile App",
@@ -45,10 +42,9 @@ function ProjectVisual({ index }: { index: number }) {
     return (
       <div className="relative h-full w-full overflow-hidden bg-gradient-to-br from-[#171D38] via-[#11162A] to-[#090D18]">
         {/* Glow */}
-        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#5B6FFF]/20 blur-[80px]" />
 
         {/* Dashboard */}
-        <div className="absolute left-[9%] top-[14%] w-[82%] overflow-hidden rounded-xl border border-white/10 bg-[#0D1323] shadow-[0_25px_60px_rgba(0,0,0,0.4)] transition-transform duration-700 group-hover:-translate-y-2 group-hover:rotate-[-1deg]">
+        <div className="absolute left-[9%] top-[10%] w-[82%] overflow-hidden rounded-xl border border-white/10 bg-[#0D1323] shadow-[0_25px_60px_rgba(0,0,0,0.4)] transition-transform duration-700 group-hover:-translate-y-2 group-hover:rotate-[-1deg]">
           {/* Browser */}
           <div className="flex h-7 items-center gap-1.5 border-b border-white/[0.07] bg-white/[0.025] px-3">
             <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
@@ -189,7 +185,7 @@ function ProjectVisual({ index }: { index: number }) {
       <div className="absolute -right-20 top-0 h-64 w-64 rounded-full bg-[#3D9BFF]/10 blur-[75px]" />
 
       {/* Phone */}
-      <div className="absolute left-1/2 top-1/2 w-[125px] -translate-x-1/2 -translate-y-1/2 rotate-[7deg] transition-transform duration-700 group-hover:translate-y-[-53%] group-hover:rotate-[3deg]">
+      <div className="absolute left-1/2 top-1/2 w-[155px] -translate-x-1/2 -translate-y-1/2 rotate-[8deg] transition-transform duration-700 group-hover:translate-y-[-53%] group-hover:rotate-[3deg]">
         <div className="rounded-[24px] border-[4px] border-[#2A344B] bg-[#080C16] p-1 shadow-[0_30px_50px_rgba(0,0,0,0.55)]">
           <div className="overflow-hidden rounded-[18px] bg-[#F2F5FF]">
             {/* Top */}
@@ -302,7 +298,7 @@ export default function FeaturedWork() {
 
         <div className="grid gap-5 lg:grid-cols-3">
           {projects.map(
-            ({ number, tag, icon: Icon, title, description, href }, index) => (
+            ({ tag, icon: Icon, title, description, href }, index) => (
               <Link
                 key={title}
                 href={href}
@@ -311,11 +307,6 @@ export default function FeaturedWork() {
                 {/* Visual */}
                 <div className="relative h-[285px] overflow-hidden border-b border-white/[0.08]">
                   <ProjectVisual index={index} />
-
-                  {/* Number */}
-                  <div className="absolute right-5 top-5 z-20 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-black/25 text-[9px] font-bold text-white/50 backdrop-blur-md">
-                    {number}
-                  </div>
 
                   {/* Tag */}
                   <div className="absolute left-5 top-5 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 backdrop-blur-md">
