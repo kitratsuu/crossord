@@ -2,59 +2,53 @@ import {
   ArrowRight,
   LayoutDashboard,
   Workflow,
-  Smartphone,
+  ShoppingBag,
   BarChart3,
-  Bot,
+  Zap,
   Activity,
   Users,
+  Mail,
+  Database,
 } from "lucide-react";
 import Link from "next/link";
 
-const projects = [
+const solutions = [
   {
-    number: "01",
-    tag: "Web Development",
+    tag: "Custom Web Apps",
     icon: LayoutDashboard,
-    title: "NextGen Business Platform",
+    title: "Web Applications & Dashboards",
     description:
-      "A high-performance digital platform with custom integrations built for a growing enterprise.",
-    href: "/work/nextgen-business-platform",
+      "Fast, scalable web apps built on the MERN stack and deployed on AWS, from internal tools to customer-facing platforms.",
+    tech: ["MongoDB", "Express", "React", "Node.js", "AWS"],
   },
   {
-    number: "02",
-    tag: "AI & Automation",
+    tag: "Automation",
     icon: Workflow,
-    title: "Intelligent Workflow System",
+    title: "Workflow Automation with n8n",
     description:
-      "An AI-powered automation platform that streamlines operations and saves 100+ hours every month.",
-    href: "/work/intelligent-workflow-system",
+      "Connect your tools and remove repetitive work, from lead capture and CRM updates to notifications and reports.",
+    tech: ["n8n", "Integrations", "CRM sync", "Alerts"],
   },
   {
-    number: "03",
-    tag: "Mobile App",
-    icon: Smartphone,
-    title: "Cross-Platform Mobile App",
+    tag: "E-commerce",
+    icon: ShoppingBag,
+    title: "Online Stores & Business Websites",
     description:
-      "A scalable mobile experience with real-time data, intuitive navigation, and seamless performance.",
-    href: "/work/cross-platform-mobile-app",
+      "Polished Shopify and Wix websites, supported by video, graphics, and digital marketing to help customers find you.",
+    tech: ["Shopify", "Wix", "Branding", "Marketing"],
   },
 ];
 
-function ProjectVisual({ index }: { index: number }) {
+function SolutionVisual({ index }: { index: number }) {
   if (index === 0) {
     return (
       <div className="relative h-full w-full overflow-hidden bg-gradient-to-br from-[#171D38] via-[#11162A] to-[#090D18]">
-        {/* Glow */}
-        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#5B6FFF]/20 blur-[80px]" />
-
-        {/* Dashboard */}
-        <div className="absolute left-[9%] top-[14%] w-[82%] overflow-hidden rounded-xl border border-white/10 bg-[#0D1323] shadow-[0_25px_60px_rgba(0,0,0,0.4)] transition-transform duration-700 group-hover:-translate-y-2 group-hover:rotate-[-1deg]">
+        <div className="absolute left-[9%] top-[10%] w-[82%] overflow-hidden rounded-xl border border-white/10 bg-[#0D1323] shadow-[0_25px_60px_rgba(0,0,0,0.4)] transition-transform duration-700 group-hover:-translate-y-2 group-hover:rotate-[-1deg]">
           {/* Browser */}
           <div className="flex h-7 items-center gap-1.5 border-b border-white/[0.07] bg-white/[0.025] px-3">
             <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
             <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
             <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
-
             <div className="ml-4 h-2 w-32 rounded-full bg-white/[0.06]" />
           </div>
 
@@ -78,32 +72,25 @@ function ProjectVisual({ index }: { index: number }) {
               ))}
             </div>
 
-            {/* Dashboard content */}
+            {/* Content */}
             <div className="flex-1 p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <div className="h-3 w-28 rounded bg-white/20" />
                   <div className="mt-2 h-2 w-20 rounded bg-white/[0.07]" />
                 </div>
-
                 <div className="h-6 w-16 rounded bg-[#6077FF]/20" />
               </div>
 
-              {/* Stats */}
+              {/* Placeholder stat cards (no fake numbers) */}
               <div className="mt-5 grid grid-cols-3 gap-2">
-                {["Revenue", "Users", "Growth"].map((item) => (
+                {[0, 1, 2].map((item) => (
                   <div
                     key={item}
                     className="rounded-lg border border-white/[0.06] bg-white/[0.025] p-2"
                   >
-                    <div className="text-[5px] text-white/30">{item}</div>
-                    <div className="mt-1 text-[10px] font-bold text-white/80">
-                      {item === "Revenue"
-                        ? "$84.2K"
-                        : item === "Users"
-                          ? "12.8K"
-                          : "+28.4%"}
-                    </div>
+                    <div className="h-1.5 w-8 rounded bg-white/[0.12]" />
+                    <div className="mt-2 h-2.5 w-12 rounded bg-white/25" />
                   </div>
                 ))}
               </div>
@@ -128,6 +115,11 @@ function ProjectVisual({ index }: { index: number }) {
             </div>
           </div>
         </div>
+
+        <div className="absolute bottom-4 right-5 flex items-center gap-1.5 rounded-full border border-white/10 bg-[#11172B]/80 px-2.5 py-1 text-[8px] font-semibold text-white/40 backdrop-blur-xl">
+          <Database className="h-2.5 w-2.5" />
+          CONCEPT PREVIEW
+        </div>
       </div>
     );
   }
@@ -137,48 +129,43 @@ function ProjectVisual({ index }: { index: number }) {
       <div className="relative h-full w-full overflow-hidden bg-gradient-to-br from-[#17162F] via-[#111225] to-[#090D18]">
         <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7657FF]/15 blur-[65px]" />
 
-        {/* Workflow nodes */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative h-[210px] w-[310px]">
             {/* Connecting lines */}
             <div className="absolute left-[72px] top-[88px] h-px w-[80px] rotate-[-25deg] bg-gradient-to-r from-[#6077FF]/20 to-[#6077FF]" />
-
             <div className="absolute left-[150px] top-[80px] h-px w-[75px] rotate-[28deg] bg-gradient-to-r from-[#6077FF] to-[#8B6CFF]" />
-
             <div className="absolute left-[155px] top-[125px] h-[55px] w-px bg-gradient-to-b from-[#6077FF] to-[#8B6CFF]" />
 
-            {/* Node 1 */}
+            {/* Trigger node */}
             <div className="absolute left-0 top-[72px] flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-[#151B31] shadow-[0_15px_35px_rgba(0,0,0,0.35)]">
-              <Activity className="h-5 w-5 text-[#7183FF]" />
+              <Mail className="h-5 w-5 text-[#7183FF]" />
             </div>
 
-            {/* Main AI node */}
+            {/* Main node */}
             <div className="absolute left-[125px] top-[60px] flex h-16 w-16 items-center justify-center rounded-2xl border border-[#667AFF]/40 bg-gradient-to-br from-[#536BFF] to-[#7657FF] shadow-[0_0_35px_rgba(91,111,255,0.35)]">
-              <Bot className="h-7 w-7 text-white" />
+              <Zap className="h-7 w-7 text-white" />
             </div>
 
-            {/* Node 3 */}
+            {/* Output node */}
             <div className="absolute right-0 top-[70px] flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-[#151B31] shadow-[0_15px_35px_rgba(0,0,0,0.35)]">
               <Workflow className="h-5 w-5 text-[#9A82FF]" />
             </div>
 
             {/* Bottom node */}
-            <div className="absolute left-[130px] bottom-0 flex h-12 w-20 items-center justify-center rounded-xl border border-white/10 bg-[#151B31]">
+            <div className="absolute bottom-0 left-[130px] flex h-12 w-20 items-center justify-center rounded-xl border border-white/10 bg-[#151B31]">
               <span className="text-[8px] font-semibold text-white/50">
                 AUTOMATED
               </span>
             </div>
 
-            {/* Floating data dots */}
+            {/* Floating dots */}
             <div className="absolute left-[105px] top-[20px] h-2 w-2 rounded-full bg-[#7183FF] shadow-[0_0_15px_5px_rgba(113,131,255,0.4)]" />
-
             <div className="absolute right-[75px] top-[28px] h-1.5 w-1.5 rounded-full bg-[#A083FF] shadow-[0_0_15px_4px_rgba(160,131,255,0.35)]" />
           </div>
         </div>
 
-        {/* AI label */}
-        <div className="absolute bottom-5 left-5 rounded-full border border-[#7183FF]/20 bg-[#11172B]/80 px-3 py-1.5 text-[9px] font-semibold text-[#8C9AFF] backdrop-blur-xl">
-          AI POWERED
+        <div className="absolute bottom-4 right-5 rounded-full border border-white/10 bg-[#11172B]/80 px-2.5 py-1 text-[8px] font-semibold text-white/40 backdrop-blur-xl">
+          CONCEPT PREVIEW
         </div>
       </div>
     );
@@ -188,26 +175,25 @@ function ProjectVisual({ index }: { index: number }) {
     <div className="relative h-full w-full overflow-hidden bg-gradient-to-br from-[#141C35] via-[#0E1425] to-[#090D18]">
       <div className="absolute -right-20 top-0 h-64 w-64 rounded-full bg-[#3D9BFF]/10 blur-[75px]" />
 
-      {/* Phone */}
-      <div className="absolute left-1/2 top-1/2 w-[125px] -translate-x-1/2 -translate-y-1/2 rotate-[7deg] transition-transform duration-700 group-hover:translate-y-[-53%] group-hover:rotate-[3deg]">
+      {/* Phone storefront */}
+      <div className="absolute left-1/2 top-1/2 w-[155px] -translate-x-1/2 -translate-y-1/2 rotate-[8deg] transition-transform duration-700 group-hover:translate-y-[-53%] group-hover:rotate-[3deg]">
         <div className="rounded-[24px] border-[4px] border-[#2A344B] bg-[#080C16] p-1 shadow-[0_30px_50px_rgba(0,0,0,0.55)]">
           <div className="overflow-hidden rounded-[18px] bg-[#F2F5FF]">
-            {/* Top */}
             <div className="flex h-7 items-center justify-center">
               <div className="h-1.5 w-10 rounded-full bg-black/15" />
             </div>
 
             <div className="px-3 pb-4">
               <div className="text-[6px] font-bold text-[#6175FF]">
-                CROSSORD
+                YOUR STORE
               </div>
 
               <div className="mt-3 text-[17px] font-bold leading-[0.95] tracking-[-0.05em] text-[#111625]">
-                Your
+                Shop
                 <br />
-                Digital
+                The New
                 <br />
-                World.
+                Collection.
               </div>
 
               <div className="mt-4 h-6 rounded-md bg-[#536BFF]" />
@@ -223,25 +209,26 @@ function ProjectVisual({ index }: { index: number }) {
         </div>
       </div>
 
-      {/* Floating cards */}
+      {/* Floating icons */}
       <div className="absolute left-[12%] top-[23%] rounded-lg border border-white/10 bg-[#12192A]/90 p-2.5 shadow-xl backdrop-blur-xl">
         <Users className="h-4 w-4 text-[#6E82FF]" />
       </div>
 
-      <div className="absolute right-[12%] bottom-[23%] rounded-lg border border-white/10 bg-[#12192A]/90 p-2.5 shadow-xl backdrop-blur-xl">
+      <div className="absolute bottom-[23%] right-[12%] rounded-lg border border-white/10 bg-[#12192A]/90 p-2.5 shadow-xl backdrop-blur-xl">
         <Activity className="h-4 w-4 text-[#6E82FF]" />
+      </div>
+
+      <div className="absolute bottom-4 right-5 rounded-full border border-white/10 bg-[#11172B]/80 px-2.5 py-1 text-[8px] font-semibold text-white/40 backdrop-blur-xl">
+        CONCEPT PREVIEW
       </div>
     </div>
   );
 }
 
-export default function FeaturedWork() {
+export default function SolutionsWeBuild() {
   return (
     <section className="relative overflow-hidden bg-[#080D18] text-white">
-      {/* =========================================================
-          BACKGROUND
-      ========================================================== */}
-
+      {/* Background */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-[#536BFF]/[0.045] blur-[150px]" />
 
       <div
@@ -256,39 +243,35 @@ export default function FeaturedWork() {
       />
 
       <div className="relative z-10 mx-auto max-w-[1440px] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
-        {/* =======================================================
-            HEADER
-        ======================================================== */}
-
+        {/* Header */}
         <div className="mb-14 grid gap-8 lg:grid-cols-[1fr_390px] lg:items-end">
           <div>
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-8 bg-[#6077FF]" />
-
               <p className="text-[10px] font-bold tracking-[0.26em] text-[#7183FF]">
-                FEATURED WORK
+                WHAT WE BUILD
               </p>
             </div>
 
             <h2 className="max-w-[700px] text-[38px] font-bold leading-[1.04] tracking-[-0.04em] sm:text-[46px] lg:text-[52px]">
-              Building Digital
+              Digital Solutions
               <br />
-              <span className="text-[#7183FF]">Solutions That Matter.</span>
+              <span className="text-[#7183FF]">Built Around Your Goals.</span>
             </h2>
           </div>
 
           <div className="lg:pb-1">
             <p className="text-[14px] leading-[1.75] text-white/45">
-              Explore a selection of products, platforms, and intelligent
-              systems we&apos;ve built to solve real business problems and
-              create measurable impact.
+              We&apos;re a new studio with hands-on experience across web
+              development, e-commerce, automation, and creative. Here&apos;s
+              what we can build for your business.
             </p>
 
             <Link
-              href="/work"
+              href="/services"
               className="group mt-5 inline-flex items-center gap-2 text-[13px] font-semibold text-[#7183FF]"
             >
-              View All Projects
+              Explore All Services
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#6077FF]/10 transition-transform duration-300 group-hover:translate-x-1">
                 <ArrowRight className="h-3.5 w-3.5" />
               </span>
@@ -296,31 +279,21 @@ export default function FeaturedWork() {
           </div>
         </div>
 
-        {/* =======================================================
-            PROJECT CARDS
-        ======================================================== */}
-
+        {/* Cards */}
         <div className="grid gap-5 lg:grid-cols-3">
-          {projects.map(
-            ({ number, tag, icon: Icon, title, description, href }, index) => (
+          {solutions.map(
+            ({ tag, icon: Icon, title, description, tech }, index) => (
               <Link
                 key={title}
-                href={href}
+                href="/contact"
                 className="group relative overflow-hidden rounded-2xl border border-white/[0.09] bg-white/[0.025] transition-all duration-500 hover:-translate-y-2 hover:border-[#6579FF]/35 hover:bg-white/[0.04] hover:shadow-[0_25px_70px_rgba(0,0,0,0.35)]"
               >
                 {/* Visual */}
                 <div className="relative h-[285px] overflow-hidden border-b border-white/[0.08]">
-                  <ProjectVisual index={index} />
+                  <SolutionVisual index={index} />
 
-                  {/* Number */}
-                  <div className="absolute right-5 top-5 z-20 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-black/25 text-[9px] font-bold text-white/50 backdrop-blur-md">
-                    {number}
-                  </div>
-
-                  {/* Tag */}
                   <div className="absolute left-5 top-5 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 backdrop-blur-md">
                     <Icon className="h-3 w-3 text-[#8292FF]" />
-
                     <span className="text-[9px] font-semibold text-white/70">
                       {tag}
                     </span>
@@ -337,9 +310,20 @@ export default function FeaturedWork() {
                     {description}
                   </p>
 
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {tech.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-full border border-white/[0.08] px-2.5 py-1 text-[10px] font-medium text-white/40"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
                   <div className="mt-6 flex items-center justify-between border-t border-white/[0.08] pt-5">
                     <span className="text-[11px] font-semibold text-white/40 transition-colors group-hover:text-[#7183FF]">
-                      View Case Study
+                      Discuss This Solution
                     </span>
 
                     <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all duration-300 group-hover:border-[#6579FF]/40 group-hover:bg-[#536BFF] group-hover:text-white">
@@ -355,18 +339,14 @@ export default function FeaturedWork() {
           )}
         </div>
 
-        {/* =======================================================
-            BOTTOM CTA
-        ======================================================== */}
-
+        {/* Bottom CTA */}
         <div className="mt-14 flex flex-col gap-5 border-t border-white/[0.08] pt-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-[10px] font-bold tracking-[0.2em] text-[#6579FF]">
               HAVE A PROJECT IN MIND?
             </p>
-
             <p className="mt-2 text-[14px] text-white/45">
-              Let&apos;s turn your idea into something extraordinary.
+              Tell us what you need and we&apos;ll suggest the right approach.
             </p>
           </div>
 

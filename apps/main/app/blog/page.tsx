@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, CalendarDays, Clock3 } from "lucide-react";
 import { Badge } from "@workspace/ui/components/badge";
 import { posts } from "@/app/blog/data";
 import { Button } from "@workspace/ui/components/button";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Practical thinking on AI, web development, digital products, automation, and the technology shaping modern businesses.",
+  alternates: { canonical: "/blog" },
+};
 
 export default function BlogPage() {
   const featuredPost = posts[0];

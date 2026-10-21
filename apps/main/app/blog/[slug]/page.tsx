@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock3 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -7,6 +8,27 @@ export function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = posts.find((post) => post.slug === slug);
+  if (!post) return {};
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: post.date,
+    },
+  };
 }
 
 export default async function BlogPostPage({

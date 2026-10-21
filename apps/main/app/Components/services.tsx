@@ -11,7 +11,6 @@ import Link from "next/link";
 
 const services = [
   {
-    number: "01",
     icon: Globe,
     title: "Web Development",
     description:
@@ -19,7 +18,6 @@ const services = [
     href: "/services/web-development",
   },
   {
-    number: "02",
     icon: Smartphone,
     title: "Mobile App Development",
     description:
@@ -27,7 +25,6 @@ const services = [
     href: "/services/mobile-app-development",
   },
   {
-    number: "03",
     icon: Users,
     title: "AI Solutions",
     description:
@@ -35,7 +32,6 @@ const services = [
     href: "/services/ai-solutions",
   },
   {
-    number: "04",
     icon: Shield,
     title: "UI/UX Design",
     description:
@@ -43,7 +39,6 @@ const services = [
     href: "/services/ui-ux-design",
   },
   {
-    number: "05",
     icon: Workflow,
     title: "Automation & Integrations",
     description:
@@ -51,7 +46,6 @@ const services = [
     href: "/services/automation-integrations",
   },
   {
-    number: "06",
     icon: Cloud,
     title: "Cloud & DevOps",
     description:
@@ -129,7 +123,7 @@ export default function Services() {
         ======================================================== */}
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ number, icon: Icon, title, description, href }) => (
+          {services.map(({ icon: Icon, title, description, href }) => (
             <Link
               key={title}
               href={href}
@@ -144,11 +138,6 @@ export default function Services() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#6077FF]/15 bg-[#6077FF]/[0.07] text-[#6077FF] transition-all duration-300 group-hover:border-[#6077FF]/30 group-hover:bg-[#6077FF] group-hover:text-white group-hover:shadow-[0_8px_25px_rgba(96,119,255,0.25)]">
                   <Icon className="h-5 w-5" strokeWidth={1.8} />
                 </div>
-
-                {/* Number */}
-                <span className="text-[10px] font-bold tracking-[0.15em] text-slate-300 transition-colors duration-300 group-hover:text-[#7183FF]">
-                  {number}
-                </span>
               </div>
 
               {/* Content */}

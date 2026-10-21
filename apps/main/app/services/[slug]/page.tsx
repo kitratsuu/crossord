@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
@@ -7,6 +8,17 @@ import { services } from "@/app/services/data";
 
 export function generateStaticParams() {
     return services.map((s) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const service = services.find((s) => s.slug === slug);
+    if (!service) return {};
+    return {
+        title: service.title,
+        description: service.description,
+        alternates: { canonical: `/services/${slug}` },
+    };
 }
 
 export default async function ServicePage({ params }: { params:  Promise<{ slug: string }> }) {

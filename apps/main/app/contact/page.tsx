@@ -129,7 +129,7 @@ export default function ContactPage() {
                           name="name"
                           required
                           placeholder="John Smith"
-                          className="h-12 rounded-xl border-slate-200 px-4 focus-visible:ring-primary"
+                          className="h-12 rounded-xl bg-slate-50 dark:bg-slate-50 border-slate-200 dark:border-slate-200 text-slate-900 placeholder:text-slate-400 px-4 focus-visible:ring-primary"
                         />
                       </div>
 
@@ -147,7 +147,7 @@ export default function ContactPage() {
                           type="email"
                           required
                           placeholder="you@company.com"
-                          className="h-12 rounded-xl border-slate-200 px-4 focus-visible:ring-primary"
+                          className="h-12 rounded-xl bg-slate-50 dark:bg-slate-50 border-slate-200 dark:border-slate-200 text-slate-900 placeholder:text-slate-400 px-4 focus-visible:ring-primary"
                         />
                       </div>
                     </div>
@@ -165,7 +165,7 @@ export default function ContactPage() {
                         id="company"
                         name="company"
                         placeholder="Your company name"
-                        className="h-12 rounded-xl border-slate-200 px-4 focus-visible:ring-primary"
+                        className="h-12 rounded-xl bg-slate-50 dark:bg-slate-50 border-slate-200 dark:border-slate-200 text-slate-900 placeholder:text-slate-400 px-4 focus-visible:ring-primary"
                       />
                     </div>
 
@@ -183,7 +183,7 @@ export default function ContactPage() {
                         required
                         rows={7}
                         placeholder="What are you looking to build? What problem are you trying to solve?"
-                        className="resize-none rounded-xl border-slate-200 p-4 focus-visible:ring-primary"
+                        className="resize-none rounded-xl bg-slate-50 dark:bg-slate-50 border-slate-200 dark:border-slate-200 text-slate-900 placeholder:text-slate-400 p-4 focus-visible:ring-primary"
                       />
                     </div>
 
@@ -242,19 +242,19 @@ export default function ContactPage() {
                   <ContactItem
                     icon={Mail}
                     label="Email"
-                    value="hello@crossord.com"
+                    value="info@crossord.com"
                   />
 
                   <ContactItem
                     icon={Phone}
                     label="Phone"
-                    value="+91 00000 00000"
+                    value="+91 6230519669"
                   />
 
                   <ContactItem
                     icon={MapPin}
                     label="Location"
-                    value="Ludhiana, Punjab, India"
+                    value="Mohali, Punjab, India"
                   />
                 </div>
               </div>

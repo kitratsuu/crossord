@@ -1,42 +1,43 @@
 "use client";
 
+import Link from "next/link";
+
 import {
   ArrowRight,
   Play,
   LayoutGrid,
-  Heart,
-  User,
-  TrendingUp,
   BrainCircuit,
   Monitor,
   Database,
   Cloud,
   Settings2,
-  Smartphone,
   Sparkles,
+  Layers,
+  Clock,
+  ShieldCheck,
 } from "lucide-react";
 import { Button } from "@workspace/ui/components/button";
 
 const stats = [
   {
     icon: LayoutGrid,
-    value: "50+",
-    label: "Projects Delivered",
+    value: "6+",
+    label: "Years Combined Team Experience",
   },
   {
-    icon: Heart,
-    value: "20+",
-    label: "Happy Clients",
+    icon: Layers,
+    value: "6",
+    label: "Core Services",
   },
   {
-    icon: User,
-    value: "4+",
-    label: "Years Experience",
+    icon: Clock,
+    value: "24h",
+    label: "Response Time",
   },
   {
-    icon: TrendingUp,
-    value: "99%",
-    label: "Client Satisfaction",
+    icon: ShieldCheck,
+    value: "100%",
+    label: "Code & IP Ownership Yours",
   },
 ];
 
@@ -94,7 +95,7 @@ export default function Hero() {
           HERO CONTENT
       ========================================================== */}
 
-      <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-12 px-6 pb-16 pt-16 lg:grid-cols-[0.88fr_1.12fr] lg:gap-4 lg:px-10 lg:pb-20 lg:pt-24">
+      <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-12 px-6 pb-16 pt-22 lg:grid-cols-[0.88fr_1.12fr] lg:gap-4 lg:px-10 lg:pb-20 lg:pt-24">
         {/* =======================================================
             LEFT CONTENT
         ======================================================== */}
@@ -130,22 +131,28 @@ export default function Hero() {
           {/* CTAs */}
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Button
+              asChild
               size="lg"
               className="h-12 rounded-lg bg-[#4C68FF] px-6 text-[13px] font-semibold shadow-[0_0_35px_rgba(76,104,255,0.28)] transition-all hover:-translate-y-0.5 hover:bg-[#5B76FF] hover:shadow-[0_0_45px_rgba(76,104,255,0.4)]"
             >
-              Start Your Project
-              <ArrowRight className="ml-1 h-4 w-4" />
+              <Link href="/contact">
+                Start Your Project
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </Button>
 
             <Button
+              asChild
               variant="ghost"
               size="lg"
               className="group h-12 gap-3 rounded-lg border border-white/15 bg-white/[0.025] px-5 text-[13px] font-medium text-white hover:border-white/25 hover:bg-white/[0.06] hover:text-white"
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all group-hover:border-[#5D76FF] group-hover:bg-[#5D76FF]/10">
-                <Play className="h-3 w-3 fill-white" />
-              </span>
-              Watch Our Video
+              <Link href="/services">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all group-hover:border-[#5D76FF] group-hover:bg-[#5D76FF]/10">
+                  <Play className="h-3 w-3 fill-white" />
+                </span>
+                Explore Our Services
+              </Link>
             </Button>
           </div>
 
