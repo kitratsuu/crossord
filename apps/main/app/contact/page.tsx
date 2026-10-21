@@ -129,7 +129,7 @@ export default function ContactPage() {
                           name="name"
                           required
                           placeholder="John Smith"
-                          className="h-12 rounded-xl border-slate-200 px-4 focus-visible:ring-primary"
+                          className="h-12 rounded-xl bg-slate-50 border-slate-200 px-4 focus-visible:ring-primary"
                         />
                       </div>
 
@@ -147,7 +147,7 @@ export default function ContactPage() {
                           type="email"
                           required
                           placeholder="you@company.com"
-                          className="h-12 rounded-xl border-slate-200 px-4 focus-visible:ring-primary"
+                          className="h-12 rounded-xl bg-slate-50 border-slate-200 px-4 focus-visible:ring-primary"
                         />
                       </div>
                     </div>
@@ -165,7 +165,7 @@ export default function ContactPage() {
                         id="company"
                         name="company"
                         placeholder="Your company name"
-                        className="h-12 rounded-xl border-slate-200 px-4 focus-visible:ring-primary"
+                        className="h-12 rounded-xl bg-slate-50 border-slate-200 px-4 focus-visible:ring-primary"
                       />
                     </div>
 

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "@workspace/ui/globals.css";
@@ -5,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@workspace/ui/lib/utils";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { siteConfig } from "@/lib/site";
 // import { SessionProvider } from "next-auth/session"; // wrap children with <SessionProvider>
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
@@ -13,6 +15,52 @@ const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "Crossord | Web, App, Software & AI Development Company",
+    template: "%s | Crossord",
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [
+    "web development company",
+    "mobile app development",
+    "custom software development",
+    "AI solutions",
+    "UI/UX design",
+    "e-commerce development",
+    "Crossord",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    url: siteConfig.url,
+    title: "Crossord | Digital Products Engineered to Perform",
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Crossord | Digital Products Engineered to Perform",
+    description: siteConfig.description,
+  },
+  robots: { index: true, follow: true },
+  // Google Search Console "HTML tag" verification code
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  email: siteConfig.email,
+  description: siteConfig.description,
+};
 
 export default function RootLayout({
   children,
@@ -31,6 +79,10 @@ export default function RootLayout({
       )}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Header />
         <ThemeProvider>{children}</ThemeProvider>
         <Footer />

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   ArrowRight,
   BrainCircuit,
@@ -56,6 +57,13 @@ const capabilities = [
       "Modern technical foundations built to perform today and scale with your business tomorrow.",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Crossord is a digital technology partner helping businesses turn complex ideas into powerful websites, applications, automation systems and AI-powered products.",
+  alternates: { canonical: "/about" },
+};
 
 export default function AboutPage() {
   return (

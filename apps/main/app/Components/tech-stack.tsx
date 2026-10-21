@@ -1,33 +1,24 @@
-import { Diamond, Hexagon, Feather, Cloud, Workflow, X } from "lucide-react";
+import {
+  Code2,
+  Cloud,
+  ShoppingBag,
+  LayoutTemplate,
+  Workflow,
+  Clapperboard,
+  Megaphone,
+} from "lucide-react";
 
-const companies = [
-  {
-    name: "TechNova",
-    icon: Diamond,
-  },
-  {
-    name: "ElevateAI",
-    icon: Hexagon,
-  },
-  {
-    name: "DataPeak",
-    icon: Feather,
-  },
-  {
-    name: "Nexora",
-    icon: X,
-  },
-  {
-    name: "CloudWave",
-    icon: Cloud,
-  },
-  {
-    name: "Flowbase",
-    icon: Workflow,
-  },
+const technologies = [
+  { name: "MERN Stack", icon: Code2 },
+  { name: "AWS", icon: Cloud },
+  { name: "Shopify", icon: ShoppingBag },
+  { name: "Wix", icon: LayoutTemplate },
+  { name: "n8n Automation", icon: Workflow },
+  { name: "Video & Graphics", icon: Clapperboard },
+  { name: "Digital Marketing", icon: Megaphone },
 ];
 
-export default function TrustedBy() {
+export default function TechStack() {
   return (
     <section className="relative overflow-hidden border-t border-white/[0.07] bg-[#080D19]">
       {/* Subtle background glow */}
@@ -40,30 +31,33 @@ export default function TrustedBy() {
             <span className="h-px w-7 bg-[#526DFF]" />
 
             <p className="text-[9px] font-bold tracking-[0.25em] text-[#7183FF]">
-              TRUSTED BY INNOVATIVE BRANDS
+              TECHNOLOGIES &amp; PLATFORMS WE WORK WITH
             </p>
           </div>
 
           {/* Divider */}
           <div className="hidden h-6 w-px bg-white/10 lg:block" />
 
-          {/* Companies */}
-          <div className="grid w-full flex-1 grid-cols-2 items-center gap-y-5 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-8 lg:gap-y-0">
-            {companies.map(({ name, icon: Icon }) => (
-              <div
+          {/* Technologies */}
+          <ul className="flex w-full flex-1 flex-wrap items-center justify-center gap-x-8 gap-y-5 lg:justify-between">
+            {technologies.map(({ name, icon: Icon }) => (
+              <li
                 key={name}
-                className="group flex items-center justify-center gap-2.5 text-white/35 transition-all duration-300 hover:text-white/80"
+                className="group flex items-center gap-2.5 text-white/35 transition-all duration-300 hover:text-white/80"
               >
                 <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.025] transition-all duration-300 group-hover:border-[#6378FF]/30 group-hover:bg-[#6378FF]/10">
-                  <Icon className="h-3.5 w-3.5 transition-colors duration-300 group-hover:text-[#7183FF]" />
+                  <Icon
+                    aria-hidden="true"
+                    className="h-3.5 w-3.5 transition-colors duration-300 group-hover:text-[#7183FF]"
+                  />
                 </div>
 
-                <span className="text-[11px] font-semibold tracking-[-0.01em]">
+                <span className="whitespace-nowrap text-[11px] font-semibold tracking-[-0.01em]">
                   {name}
                 </span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

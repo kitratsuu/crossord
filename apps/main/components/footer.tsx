@@ -6,17 +6,13 @@ const services = [
   { label: "Mobile App Development", href: "/services/mobile-app-development" },
   { label: "UI/UX Design", href: "/services/ui-ux-design" },
   { label: "AI Solutions", href: "/services/ai-solutions" },
-  {
-    label: "Automation & Integrations",
-    href: "/services/automation-integrations",
-  },
+  { label: "Custom Software", href: "/services/custom-software" },
   { label: "Cloud & DevOps", href: "/services/cloud-devops" },
 ];
 
 const company = [
   { label: "About Us", href: "/about" },
-  { label: "Case Studies", href: "/work" },
-  { label: "Careers", href: "/careers" },
+  { label: "Services", href: "/services" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -70,29 +66,29 @@ export default function Footer() {
               </span>
               <span className="text-lg font-bold tracking-tight">CROSSORD</span>
             </div>
-
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
               Building scalable web apps, mobile products, and digital
               experiences for startups and enterprises worldwide.
             </p>
-
             <div className="mt-8 space-y-1 text-sm text-white/50">
               <p>info@crossord.com</p>
               <p>+91 6230519669</p>
             </div>
-
-            <div className="mt-8 flex gap-3">
-              {socials.map((s) => (
-                <Link
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="flex size-8 items-center justify-center rounded-md bg-white/5 text-white/70 transition hover:bg-white/10 hover:text-white"
-                >
-                  {s.icon}
-                </Link>
-              ))}
-            </div>
+            {/*
+             <div className="mt-8 flex gap-3">
+               {
+             socials.map((s) => (
+                 <Link
+                   key={s.label}
+                   href={s.href}
+                   aria-label={s.label}
+                   className="flex size-8 items-center justify-center rounded-md bg-white/5 text-white/70 transition hover:bg-white/10 hover:text-white"
+                 >
+                   {s.icon}
+                 </Link>
+               ))}
+             </div>
+            */}
           </div>
 
           {/* Services */}
