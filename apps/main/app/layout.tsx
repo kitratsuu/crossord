@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "@workspace/ui/globals.css";
+import "./motion.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@workspace/ui/lib/utils";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { siteConfig } from "@/lib/site";
+import { contact, siteConfig } from "@/lib/site";
+import { Analytics } from "@/components/analytics";
+import { LeadCta } from "@/components/lead-cta";
+import { ScrollProgress, SmoothScroll } from "@/components/motion";
 // import { SessionProvider } from "next-auth/session"; // wrap children with <SessionProvider>
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
@@ -55,11 +59,21 @@ export const metadata: Metadata = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   name: siteConfig.name,
   url: siteConfig.url,
+  logo: `${siteConfig.url}/brand/mark.png`,
+  image: `${siteConfig.url}/opengraph-image`,
   email: siteConfig.email,
+  telephone: contact.phone,
   description: siteConfig.description,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mohali",
+    addressRegion: "Punjab",
+    addressCountry: "IN",
+  },
+  areaServed: "Worldwide",
 };
 
 export default function RootLayout({
@@ -83,9 +97,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <SmoothScroll />
+        <ScrollProgress />
         <Header />
         <ThemeProvider>{children}</ThemeProvider>
         <Footer />
+        <LeadCta />
+        <Analytics />
       </body>
     </html>
   );

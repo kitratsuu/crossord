@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight, CalendarDays, Clock3 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts } from "@/app/blog/data";
+import { Markdown } from "@/app/blog/markdown";
+import { siteConfig } from "@/lib/site";
 
 export function generateStaticParams() {
   return posts.map((post) => ({
@@ -44,8 +46,23 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    url: `${siteConfig.url}/blog/${post.slug}`,
+    author: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+    publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+  };
+
   return (
     <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* ARTICLE HERO */}
       <section className="relative overflow-hidden bg-[#070B17] text-white">
         <div
@@ -126,8 +143,8 @@ export default async function BlogPostPage({
               </div>
 
               <div className="prose prose-slate max-w-none">
-                <div className="whitespace-pre-line text-[17px] leading-8 text-slate-600">
-                  {post.content}
+                <div className="text-[17px] leading-8 text-slate-600">
+                  <Markdown content={post.content} />
                 </div>
               </div>
 

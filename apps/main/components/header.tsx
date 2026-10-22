@@ -1,5 +1,6 @@
 "use client";
 
+import { Logo } from "@/components/logo";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ChevronDown, ChevronRight, Menu, X } from "lucide-react";
@@ -129,13 +130,7 @@ export default function Header() {
               className="flex items-center gap-3"
               onClick={closeMobileMenu}
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/40 bg-black shadow-[0_0_20px_rgba(91,82,255,0.2)]">
-                <span className="text-sm font-bold text-white">C</span>
-              </div>
-
-              <span className="text-sm font-bold tracking-[0.16em] text-white">
-                CROSSORD
-              </span>
+              <Logo />
             </Link>
 
             {/* DESKTOP NAV */}
@@ -269,7 +264,7 @@ export default function Header() {
           <div className="h-[88px]" />
 
           {/* SCROLLABLE CONTENT */}
-          <div className="h-[calc(100dvh-88px)] overflow-y-auto overscroll-contain px-5 pb-8">
+          <div data-lenis-prevent className="h-[calc(100dvh-88px)] overflow-y-auto overscroll-contain px-5 pb-8">
             <div className="mx-auto max-w-lg">
               {/* HOME */}
               <MobileLink href="/" onClick={closeMobileMenu} title="Home" />

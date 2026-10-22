@@ -2,6 +2,7 @@
 export const legalPages = [
   {
     slug: "privacy-policy",
+    description: "How Crossord collects, uses and protects the personal information you share with us.",
     title: "Privacy Policy",
     sections: [
       {
@@ -20,6 +21,7 @@ export const legalPages = [
   },
   {
     slug: "terms-of-service",
+    description: "The terms that apply when you use the Crossord website.",
     title: "Terms of Service",
     sections: [
       {
@@ -38,6 +40,7 @@ export const legalPages = [
   },
   {
     slug: "cookie-policy",
+    description: "How the Crossord website uses cookies and how you can manage them.",
     title: "Cookie Policy",
     sections: [
       {

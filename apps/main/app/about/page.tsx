@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LogoMark } from "@/components/logo";
 import {
   ArrowRight,
   BrainCircuit,
@@ -6,7 +7,6 @@ import {
   Layers3,
   Rocket,
   ShieldCheck,
-  Sparkles,
   Users,
 } from "lucide-react";
 import Link from "next/link";
@@ -134,7 +134,7 @@ export default function AboutPage() {
 
               <div className="absolute right-24 top-28 flex h-44 w-44 items-center justify-center rounded-3xl border border-primary/30 bg-primary/10 shadow-[0_0_100px_rgba(124,110,246,0.22)] backdrop-blur-xl">
                 <div className="text-center">
-                  <Sparkles className="mx-auto mb-3 h-8 w-8 text-primary" />
+                  <LogoMark tone="light" className="mx-auto mb-3 h-12 w-12" />
                   <p className="text-2xl font-bold">CROSSORD</p>
                   <p className="mt-1 text-[10px] uppercase tracking-[0.25em] text-white/40">
                     Digital Technology
