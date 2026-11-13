@@ -1,6 +1,8 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import { services } from "@/app/services/data";
+import { trackEvent } from "@/components/analytics";
 import { Badge } from "@workspace/ui/components/badge";
 import { Button } from "@workspace/ui/components/button";
 import { Input } from "@workspace/ui/components/input";
@@ -12,9 +14,24 @@ import {
   CheckCircle2,
   Mail,
   MapPin,
+  MessageCircle,
   Phone,
   Sparkles,
 } from "lucide-react";
+
+const fieldClass =
+  "h-12 rounded-xl bg-slate-50 dark:bg-slate-50 border-slate-200 dark:border-slate-200 text-slate-900 placeholder:text-slate-400 px-4 focus-visible:ring-primary";
+
+const selectClass =
+  "h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-900 outline-none focus-visible:ring-2 focus-visible:ring-primary";
+
+const budgets = [
+  "Under ₹1 lakh",
+  "₹1–3 lakh",
+  "₹3–10 lakh",
+  "₹10 lakh+",
+  "Not sure yet",
+];
 
 const initialState: ContactFormState = { success: false };
 
@@ -23,6 +40,24 @@ export default function ContactPage() {
     submitContactForm,
     initialState,
   );
+  const serviceRef = useRef<HTMLSelectElement>(null);
+  const submittedService = useRef("");
+
+  // Pre-select the service when arriving from a service page (?service=slug).
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get("service");
+    const match = services.find((s) => s.slug === slug);
+    if (match && serviceRef.current) {
+      serviceRef.current.value = match.title;
+      submittedService.current = match.title;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (state.success) {
+      trackEvent("generate_lead", { service: submittedService.current || "unspecified" });
+    }
+  }, [state.success]);
 
   return (
     <main className="min-h-screen bg-white">
@@ -114,7 +149,7 @@ export default function ContactPage() {
                     </p>
                   </div>
 
-                  <form action={formAction} className="space-y-6">
+                  <form action={formAction} className="relative space-y-6">
                     <div className="grid gap-6 sm:grid-cols-2">
                       <div className="grid gap-2">
                         <Label
@@ -129,7 +164,7 @@ export default function ContactPage() {
                           name="name"
                           required
                           placeholder="John Smith"
-                          className="h-12 rounded-xl bg-slate-50 dark:bg-slate-50 border-slate-200 dark:border-slate-200 text-slate-900 placeholder:text-slate-400 px-4 focus-visible:ring-primary"
+                          className={fieldClass}
                         />
                       </div>
 
@@ -147,10 +182,77 @@ export default function ContactPage() {
                           type="email"
                           required
                           placeholder="you@company.com"
-                          className="h-12 rounded-xl bg-slate-50 dark:bg-slate-50 border-slate-200 dark:border-slate-200 text-slate-900 placeholder:text-slate-400 px-4 focus-visible:ring-primary"
+                          className={fieldClass}
                         />
                       </div>
                     </div>
+
+                    <div className="grid gap-6 sm:grid-cols-2">
+                      <div className="grid gap-2">
+                        <Label
+                          htmlFor="phone"
+                          className="text-sm font-medium text-slate-700"
+                        >
+                          Phone / WhatsApp
+                          <span className="ml-1 text-slate-400">(optional)</span>
+                        </Label>
+
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          autoComplete="tel"
+                          placeholder="+91 98765 43210"
+                          className={fieldClass}
+                        />
+                      </div>
+
+                      <div className="grid gap-2">
+                        <Label
+                          htmlFor="service"
+                          className="text-sm font-medium text-slate-700"
+                        >
+                          Service you need
+                        </Label>
+
+                        <select
+                          id="service"
+                          name="service"
+                          ref={serviceRef}
+                          defaultValue=""
+                          onChange={(e) => (submittedService.current = e.target.value)}
+                          className={selectClass}
+                        >
+                          <option value="">Select a service</option>
+                          {services.map((s) => (
+                            <option key={s.slug} value={s.title}>
+                              {s.title}
+                            </option>
+                          ))}
+                          <option value="Not sure yet">Not sure yet</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid gap-6 sm:grid-cols-2">
+                      <div className="grid gap-2">
+                        <Label
+                          htmlFor="budget"
+                          className="text-sm font-medium text-slate-700"
+                        >
+                          Estimated budget
+                          <span className="ml-1 text-slate-400">(optional)</span>
+                        </Label>
+
+                        <select id="budget" name="budget" defaultValue="" className={selectClass}>
+                          <option value="">Select a range</option>
+                          {budgets.map((b) => (
+                            <option key={b} value={b}>
+                              {b}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
                     <div className="grid gap-2">
                       <Label
@@ -165,8 +267,15 @@ export default function ContactPage() {
                         id="company"
                         name="company"
                         placeholder="Your company name"
-                        className="h-12 rounded-xl bg-slate-50 dark:bg-slate-50 border-slate-200 dark:border-slate-200 text-slate-900 placeholder:text-slate-400 px-4 focus-visible:ring-primary"
+                        className={fieldClass}
                       />
+                    </div>
+                    </div>
+
+                    {/* Honeypot for bots — hidden from real visitors */}
+                    <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                      <label htmlFor="website">Website</label>
+                      <input id="website" name="website" tabIndex={-1} autoComplete="off" />
                     </div>
 
                     <div className="grid gap-2">
@@ -221,8 +330,18 @@ export default function ContactPage() {
 
                   <p className="mt-4 max-w-md text-sm leading-6 text-slate-500">
                     Thanks for reaching out. We'll review your project and get
-                    back to you as soon as possible.
+                    back to you within one business day.
                   </p>
+
+                  <a
+                    href="https://wa.me/919872444928"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    Need it faster? Chat with us on WhatsApp
+                  </a>
                 </div>
               )}
             </div>
@@ -243,18 +362,28 @@ export default function ContactPage() {
                     icon={Mail}
                     label="Email"
                     value="info@crossord.com"
+                    href="mailto:info@crossord.com"
                   />
 
                   <ContactItem
                     icon={Phone}
                     label="Phone"
-                    value="+91 6230519669"
+                    value="+91 9872444928"
+                    href="tel:+919872444928"
+                  />
+
+                  <ContactItem
+                    icon={MessageCircle}
+                    label="WhatsApp"
+                    value="Chat with us"
+                    href="https://wa.me/919872444928"
                   />
 
                   <ContactItem
                     icon={MapPin}
                     label="Location"
                     value="Mohali, Punjab, India"
+                    href="https://www.google.com/maps/search/?api=1&query=Mohali%2C+Punjab%2C+India"
                   />
                 </div>
               </div>
@@ -302,6 +431,26 @@ export default function ContactPage() {
             You don't need to have everything figured out before contacting us.
             Let's start with a conversation.
           </p>
+
+          <div className="mt-9 flex flex-wrap justify-center gap-4">
+            <Button asChild size="lg" className="gap-2 font-semibold">
+              <a href="https://wa.me/919872444928" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp Us
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="gap-2 border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white"
+            >
+              <a href="tel:+919872444928">
+                <Phone className="h-4 w-4" />
+                Call +91 9872444928
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
     </main>
@@ -312,14 +461,22 @@ function ContactItem({
   icon: Icon,
   label,
   value,
+  href,
 }: {
   icon: React.ElementType;
   label: string;
   value: string;
+  href: string;
 }) {
+  const external = href.startsWith("http");
   return (
-    <div className="flex items-start gap-4">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.06] text-primary">
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      className="group flex items-start gap-4"
+    >
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.06] text-primary transition-colors group-hover:bg-primary/20">
         <Icon className="h-4 w-4" />
       </div>
 
@@ -328,9 +485,9 @@ function ContactItem({
           {label}
         </p>
 
-        <p className="text-sm font-medium text-white/80">{value}</p>
+        <p className="text-sm font-medium text-white/80 transition-colors group-hover:text-white">{value}</p>
       </div>
-    </div>
+    </a>
   );
 }
 

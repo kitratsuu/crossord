@@ -1,5 +1,141 @@
 export const posts = [
   {
+    slug: "nextjs-vs-wordpress-business-website",
+    tag: "Web Development",
+    title: "Next.js vs WordPress: Which Is Right for Your Business Website?",
+    excerpt:
+      "WordPress powers a huge share of the web, but modern frameworks like Next.js are changing what a business website can do. Here is how to choose.",
+    date: "2026-10-14",
+    readTime: "6 min read",
+    content: `
+Choosing the technology behind your website affects its speed, security, search visibility and how easily your team can grow it. Two of the most common options today are WordPress and Next.js.
+
+Both can produce excellent websites. The right choice depends on what your website needs to do.
+
+## What Is WordPress?
+
+WordPress is a content management system originally built for blogging. It has a huge ecosystem of themes and plugins, which makes it quick to launch a standard website.
+
+Its strengths are familiarity and speed of setup. Many marketing teams already know how to use it.
+
+## What Is Next.js?
+
+Next.js is a React framework for building fast, modern websites and web applications. Pages can be pre-rendered for speed and enhanced with interactive features where needed.
+
+It is used by companies that treat their website as a product — something that needs to be fast, flexible and integrated with other systems.
+
+## Comparing the Two
+
+### Performance
+
+Next.js sites are typically faster out of the box because pages are pre-rendered and only the code each page needs is loaded. WordPress sites can be fast too, but they often slow down as themes and plugins accumulate.
+
+Speed matters: Google uses Core Web Vitals as a ranking signal, and faster pages convert better.
+
+### Security
+
+WordPress is a frequent target for attacks, largely because of outdated plugins. It requires regular updates and monitoring.
+
+A Next.js site has a much smaller attack surface, especially when pages are statically generated.
+
+### Flexibility
+
+WordPress works best when your site fits what themes and plugins already offer. Custom features often mean stacking plugins or writing PHP.
+
+Next.js has no such limits. Customer portals, calculators, dashboards, AI features and integrations can all live in the same codebase as your marketing pages.
+
+### Content Editing
+
+WordPress has a familiar editor built in. With Next.js, editing is usually handled by a headless CMS such as Sanity, Contentful or Strapi — giving editors a clean interface while developers keep full control of the front end.
+
+## When to Choose WordPress
+
+- You need a simple brochure site or blog quickly
+- Your team already relies on WordPress
+- You do not expect complex custom functionality
+
+## When to Choose Next.js
+
+- Performance and SEO are business-critical
+- You need custom features, integrations or user accounts
+- Your website is expected to grow into a platform
+- You want lower long-term maintenance and security risk
+
+## Our Recommendation
+
+For a straightforward blog, WordPress remains a reasonable choice. For businesses that see their website as a growth engine, Next.js usually provides better performance, security and room to grow.
+
+At Crossord, we build business websites and web applications with Next.js and help teams choose the right content management setup for how they work.
+    `,
+  },
+
+  {
+    slug: "custom-software-vs-off-the-shelf",
+    tag: "Strategy",
+    title: "Custom Software vs Off-the-Shelf: How to Decide",
+    excerpt:
+      "Should you buy a ready-made tool or build software around your business? A practical framework for making the decision.",
+    date: "2026-10-02",
+    readTime: "5 min read",
+    content: `
+Every growing business eventually hits the same question: should we keep adapting to the tools we bought, or build software that fits the way we work?
+
+There is no universal answer. But there is a clear way to think about it.
+
+## The Case for Off-the-Shelf Software
+
+Ready-made tools such as CRMs, accounting platforms and project management apps are quick to start with and cost little upfront.
+
+They make sense when:
+
+- Your process is standard for your industry
+- You need a solution immediately
+- The tool covers most of what you need without heavy workarounds
+
+## The Hidden Costs of Off-the-Shelf Tools
+
+As teams grow, the costs often show up elsewhere:
+
+- **Per-user pricing** that rises with every new hire
+- **Workarounds** in spreadsheets to cover missing features
+- **Disconnected data** spread across several tools
+- **Process compromises** where the team adapts to the software instead of the other way around
+
+## The Case for Custom Software
+
+Custom software is built around your exact workflow. It can automate the steps that are unique to your business — which are often the steps that give you a competitive advantage.
+
+Benefits include:
+
+- One system that connects your data and teams
+- No per-seat licence fees
+- Full ownership of the code and roadmap
+- Automation of repetitive, manual work
+
+## A Simple Framework
+
+Ask these four questions:
+
+1. Is this process a core part of how we compete?
+2. Are we spending significant time on workarounds?
+3. Are licence costs growing faster than the value we get?
+4. Do we need our systems to share data in ways our current tools cannot?
+
+If you answer yes to two or more, custom software is worth exploring.
+
+## The Hybrid Approach
+
+The best answer is often a mix. Keep proven tools for standard functions like accounting or email, and build custom software for the processes that are unique to you — connected through APIs so data flows between them.
+
+## Getting Started
+
+Start small. Identify the single workflow causing the most friction, build a focused solution, measure the time saved and expand from there.
+
+At Crossord, we help businesses map their processes, decide what to build and what to buy, and deliver custom software that fits how their teams really work.
+    `,
+  },
+
+  {
     slug: "ai-transforming-business-automation",
     tag: "AI",
     title: "How AI is Transforming Business Automation",

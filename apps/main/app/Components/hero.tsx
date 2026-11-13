@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { LogoMark } from "@/components/logo";
 
 import {
   ArrowRight,
@@ -256,11 +257,7 @@ export default function Hero() {
                   {/* Mockup navbar */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="flex h-5 w-5 items-center justify-center rounded bg-[#536BFF]">
-                        <span className="text-[7px] font-bold text-white">
-                          V
-                        </span>
-                      </div>
+                      <LogoMark className="h-5 w-5" />
 
                       <span className="text-[9px] font-bold text-[#151A2B]">
                         CROSSORD

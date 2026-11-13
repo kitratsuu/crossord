@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { X } from "lucide-react";
+import { Logo } from "@/components/logo";
 
 const services = [
   { label: "Web Development", href: "/services/web-development" },
@@ -60,19 +60,22 @@ export default function Footer() {
         <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-white">
-                <X className="h-4 w-4" />
-              </span>
-              <span className="text-lg font-bold tracking-tight">CROSSORD</span>
-            </div>
+            <Logo />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
               Building scalable web apps, mobile products, and digital
               experiences for startups and enterprises worldwide.
             </p>
             <div className="mt-8 space-y-1 text-sm text-white/50">
-              <p>info@crossord.com</p>
-              <p>+91 6230519669</p>
+              <p>
+                <a href="mailto:info@crossord.com" className="transition hover:text-white">
+                  info@crossord.com
+                </a>
+              </p>
+              <p>
+                <a href="tel:+919872444928" className="transition hover:text-white">
+                  +91 9872444928
+                </a>
+              </p>
             </div>
             {/*
              <div className="mt-8 flex gap-3">

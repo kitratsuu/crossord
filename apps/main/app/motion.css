@@ -1,0 +1,60 @@
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: 60;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, #2f54eb, #7c8cff);
+  box-shadow: 0 0 12px rgba(76, 104, 255, 0.6);
+  pointer-events: none;
+}
+
+/*
+ * Scroll reveal, pure CSS (scroll-driven animations), so it never touches the
+ * server-rendered markup. Applies to every section after the first (the hero).
+ * Browsers without support simply show content without the effect.
+ */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    main > section ~ section :is(h2, h2 + p, .grid > *, ul:not(.grid *) > li) {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 55%;
+    }
+  }
+}
+
+/* Brand-coloured text selection */
+::selection {
+  background: rgba(47, 84, 235, 0.85);
+  color: #fff;
+}
