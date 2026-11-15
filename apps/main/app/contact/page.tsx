@@ -157,6 +157,7 @@ export default function ContactPage() {
                           className="text-sm font-medium text-slate-700"
                         >
                           Your Name
+                          <span className="ml-0.5 text-red-500" aria-hidden>*</span>
                         </Label>
 
                         <Input
@@ -174,6 +175,7 @@ export default function ContactPage() {
                           className="text-sm font-medium text-slate-700"
                         >
                           Email Address
+                          <span className="ml-0.5 text-red-500" aria-hidden>*</span>
                         </Label>
 
                         <Input
@@ -284,6 +286,7 @@ export default function ContactPage() {
                         className="text-sm font-medium text-slate-700"
                       >
                         Tell us about your project
+                        <span className="ml-0.5 text-red-500" aria-hidden>*</span>
                       </Label>
 
                       <Textarea

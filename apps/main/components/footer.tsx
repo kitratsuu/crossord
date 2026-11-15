@@ -5,9 +5,12 @@ const services = [
   { label: "Web Development", href: "/services/web-development" },
   { label: "Mobile App Development", href: "/services/mobile-app-development" },
   { label: "UI/UX Design", href: "/services/ui-ux-design" },
-  { label: "AI Solutions", href: "/services/ai-solutions" },
+  { label: "E-Commerce Solutions", href: "/services/ecommerce-development" },
+  { label: "AI & Automation", href: "/services/ai-solutions" },
   { label: "Custom Software", href: "/services/custom-software" },
+  { label: "API Development & Integration", href: "/services/api-development" },
   { label: "Cloud & DevOps", href: "/services/cloud-devops" },
+  { label: "All Services", href: "/services" },
 ];
 
 const company = [

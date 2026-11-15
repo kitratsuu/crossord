@@ -43,7 +43,7 @@ const services = [
     title: "Automation & Integrations",
     description:
       "Connected tools, data, and workflows that eliminate repetitive work and improve efficiency.",
-    href: "/services/automation-integrations",
+    href: "/services/api-development",
   },
   {
     icon: Cloud,

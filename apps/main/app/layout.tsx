@@ -41,7 +41,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
-    url: siteConfig.url,
     title: "Crossord | Digital Products Engineered to Perform",
     description: siteConfig.description,
   },
