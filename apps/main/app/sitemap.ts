@@ -6,7 +6,7 @@ import { legalPages } from "@/app/legal/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
-  const staticRoutes = ["", "/about", "/services", "/blog", "/contact"].map((path) => ({
+  const staticRoutes = ["", "/work", "/about", "/services", "/blog", "/contact"].map((path) => ({
     url: `${base}${path}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,

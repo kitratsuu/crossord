@@ -217,6 +217,7 @@ export default function Header() {
                 )}
               </div>
 
+              <NavLink href="/work">OUR WORK</NavLink>
               <NavLink href="/about">ABOUT US</NavLink>
               <NavLink href="/blog">BLOG</NavLink>
               <NavLink href="/contact">CONTACT</NavLink>
@@ -324,6 +325,8 @@ export default function Header() {
                   </div>
                 )}
               </div>
+
+              <MobileLink href="/work" onClick={closeMobileMenu} title="Our Work" />
 
               <MobileLink
                 href="/about"
